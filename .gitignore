@@ -30,3 +30,7 @@ $RECYCLE.BIN/
 
 # Husky
 .husky
+
+# Built files
+/src/resources/css
+/sfdc

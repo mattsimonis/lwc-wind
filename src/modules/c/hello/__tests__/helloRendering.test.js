@@ -1,16 +1,16 @@
 import { createElement } from 'lwc';
-import App from '../app';
+import Hello from '../hello';
 
 const createComponent = (params = {}) => {
-  const element = createElement('c-app', {
-    is: App
+  const element = createElement('c-hello', {
+    is: Hello
   });
   Object.assign(element, params);
   document.body.appendChild(element);
   return element;
 };
 
-describe('c-app', () => {
+describe('c-hello', () => {
   afterEach(() => {
     // The jsdom instance is shared across test cases in a single file so reset the DOM
     while (document.body.firstChild) {
@@ -28,7 +28,7 @@ describe('c-app', () => {
 
   it('is accessible', () => {
     const element = createComponent();
-    
+
     return Promise.resolve().then(() => expect(element).toBeAccessible());
   });
 });

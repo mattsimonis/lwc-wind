@@ -3,6 +3,7 @@
 module.exports = {
   resources: [
     { from: 'src/resources/**', to: 'dist/resources/' },
+    { from: 'src/site/**', to: 'dist/site/' },
     { from: 'src/index.html', to: 'dist/' }
   ]
 };

@@ -2,6 +2,14 @@
   "modules": [
     {
       "dir": "src/modules"
+    },
+    {
+      "name": "@salesforce/resourceUrl/lwdesign",
+      "path": "scopedImports/@salesforce-resourceUrl-lwdesign.js"
+    },
+    {
+      "name": "@salesforce/label/c.lwcwind_Hello",
+      "path": "src/labels/c.lwcwind_Hello.js"
     }
   ]
 }

@@ -21,34 +21,42 @@
   "license": "MIT",
   "repository": "https://github.com/mattsimonis/lwc-wind",
   "scripts": {
-    "build": "lwc-services build -m production -b rollup",
-    "build:development": "lwc-services build -b rollup",
+    "build": "npm-run-all css:build lwc:build",
+    "css:build": "tailwindcss -i ./src/css/main.css -o ./src/resources/css/main.css --minify",
     "css:watch": "tailwindcss -i ./src/css/main.css -o ./src/resources/css/main.css --watch",
     "lint": "eslint ./src/**/*.js",
+    "lwc:build": "lwc-services build -m production -b rollup",
+    "lwc:build:development": "lwc-services build -b rollup",
     "lwc:watch": "lwc-services watch -b rollup",
     "postinstall": "husky install",
     "precommit": "npm run prettier:verify && [ $? -eq 0 ] && npm run lint",
     "prettier": "prettier --write \"**/*.{css,html,js,json,md,ts,yaml,yml}\"",
     "prettier:verify": "prettier --list-different \"**/*.{css,html,js,json,md,ts,yaml,yml}\"",
+    "sfdc:build": "node ./scripts/sfdc-build.js",
     "start": "node scripts/server.js",
     "test": "npm run lint && npm run test:unit",
     "test:unit": "lwc-services test:unit",
     "test:unit:coverage": "lwc-services test:unit --coverage",
     "test:unit:debug": "lwc-services test:unit --debug",
     "test:unit:watch": "lwc-services test:unit --watch",
-    "watch": "npm-run-all --parallel css:watch lwc:watch"
+    "update:labels": "node ./scripts/label-resolver.js",
+    "watch": "npm run update:labels && npm-run-all --parallel css:watch lwc:watch"
   },
   "devDependencies": {
-    "@lwc/synthetic-shadow": "^2.7.1",
+    "@lwc/synthetic-shadow": "^2.7.3",
     "@sa11y/jest": "^3.1.0",
     "autoprefixer": "^10.4.2",
+    "deepmerge": "^4.2.2",
     "eslint": "^7.32.0",
     "eslint-plugin-inclusive-language": "^2.2.0",
+    "fs-extra": "^10.0.0",
     "husky": "^7.0.4",
     "lwc-services": "^3.2.2",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.5",
     "prettier": "^2.5.1",
-    "tailwindcss": "^3.0.13"
+    "shelljs": "^0.8.5",
+    "tailwindcss": "^3.0.15",
+    "xmlbuilder2": "^3.0.2"
   }
 }
