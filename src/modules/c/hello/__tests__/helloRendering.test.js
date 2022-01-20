@@ -18,12 +18,11 @@ describe('c-hello', () => {
     }
   });
 
-  it('renders welcome message', () => {
+  it('renders welcome heading', () => {
     const element = createComponent();
     const headingElement = element.shadowRoot.querySelector('h1');
 
     expect(headingElement).not.toBeFalsy();
-    expect(headingElement.textContent).toContain('Welcome');
   });
 
   it('is accessible', () => {
